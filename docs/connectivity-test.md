@@ -7,13 +7,14 @@ working correctly before implementing access control lists (ACLs).
 
 R1's four VLAN gateway subinterfaces were verified as up/up.
 
-| Source      | Destination | Test | Expected | Actual          |
-| Employee PC | 10.77.10.1  | Ping | Success  | Passed, 0% loss |
-| Employee PC | 10.77.40.10 | Ping | Success  | Passed, 0% loss |
-| Guest PC    | 10.77.20.1  | Ping | Success  | Passed, 0% loss |
-| Guest PC    | 10.77.40.10 | Ping | Success  | Passed, 0% loss |
-| Admin PC    | 10.77.30.1  | Ping | Success  | Passed, 0% loss |
-| Admin PC    | 10.77.40.10 | Ping | Success  | Passed, 0% loss |
+| Source | Destination | Test | Expected | Actual |
+|---|---|---|---|---|
+| Employee PC | 10.77.10.1 | Ping | Success | Passed, 0% loss |
+| Employee PC | 10.77.40.10 | Ping | Success | Passed, 0% loss |
+| Guest PC | 10.77.20.1 | Ping | Success | Passed, 0% loss |
+| Guest PC | 10.77.40.10 | Ping | Success | Passed, 0% loss |
+| Admin PC | 10.77.30.1 | Ping | Success | Passed, 0% loss |
+| Admin PC | 10.77.40.10 | Ping | Success | Passed, 0% loss |
 
 ### Result
 
