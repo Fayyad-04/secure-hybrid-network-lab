@@ -80,30 +80,41 @@ The screenshots below document rule matches and where the ACLs are applied. Matc
 
 ![GUEST-IN applied inbound on R1 Gi0/0.20 and configuration saved](../labs/evidence/Guest-In.png)
 
-### Browser evidence — capture pending
+### Browser evidence
 
-The results in the table above are the lab author's recorded observations. Separate screenshots of employee HTTP success, guest HTTP failure, and admin HTTP success have not yet been uploaded. The existing ping screenshots belong to the pre-ACL baseline.
+The uploaded screenshots show the following outcomes at `http://10.77.40.10`. The lab author's filenames identify PC0 as employee, PC1 as guest, and PC2 as admin.
 
-Capture these from the current secured Packet Tracer lab:
+| Source | Screenshot observation |
+|---|---|
+| Employee (PC0) | Server webpage displayed |
+| Guest (PC1) | Request Timeout |
+| Admin (PC2) | Server webpage displayed |
 
-1. Keep HTTP enabled on WEB-SERVER. From each PC, open **Desktop > Web Browser**, enter `http://10.77.40.10`, and click **Go** to issue a fresh request.
-2. Capture the device name, address bar, and loaded page or failure message together. A previously displayed page is not evidence of a fresh successful request.
-3. For the guest test, wait for the request to fail. Compare with a fresh successful employee/admin request so a stopped HTTP service is not mistaken for ACL enforcement. Check `show access-lists` after the guest request.
-4. Save and upload the following PNG files into `labs/evidence/` using Windows/GitHub, not the router CLI:
+![Employee HTTP request succeeds](../labs/evidence/Employee_browse.png)
 
-| Screenshot filename | Expected observation | Evidence status |
-|---|---|---|
-| employee-http-allowed.png | Employee loads the server webpage | Pending capture |
-| guest-http-blocked.png | Guest request fails | Pending capture |
-| admin-http-allowed.png | Admin loads the server webpage | Pending capture |
+![Guest HTTP request times out](../labs/evidence/Guest_browse.png)
 
-After uploading the images, replace the pending status and add these Markdown image references below this section. They are shown as code until the files exist, avoiding broken image links:
+![Admin HTTP request succeeds](../labs/evidence/Admin_Browse.png)
 
-```markdown
-![Employee HTTP request succeeds](../labs/evidence/employee-http-allowed.png)
-![Guest HTTP request fails](../labs/evidence/guest-http-blocked.png)
-![Admin HTTP request succeeds](../labs/evidence/admin-http-allowed.png)
-```
+These browser outcomes are consistent with the configured ACL policy and existing ACL-counter evidence. The simulation has not been independently rerun as part of the documentation review.
+
+### Post-ACL ping evidence
+
+These screenshots are separate from the pre-ACL baseline images linked earlier.
+
+**Employee:** gateway `10.77.10.1` responds; server `10.77.40.10` and admin host `10.77.30.10` return destination-host-unreachable responses from R1.
+
+![Employee post-ACL ping results](../labs/evidence/Employee_Ping.png)
+
+**Guest:** its own gateway `10.77.20.1` responds; the other VLAN gateway addresses `10.77.40.1`, `10.77.10.1`, and `10.77.30.1` are blocked.
+
+![Guest post-ACL gateway ping results](../labs/evidence/Guest_Ping.png)
+
+**Evidence distinction:** the guest screenshot tests other VLAN **gateways ending in .1**, not the **hosts ending in .10** listed in the main results table. The three host-ping results remain author-reported, without corresponding screenshots. To complete that evidence, run `ping 10.77.40.10`, `ping 10.77.10.10`, and `ping 10.77.30.10` from the guest PC and upload a separate `Guest_Host_Ping.png`. Do not replace the useful gateway-test screenshot.
+
+**Admin:** server `10.77.40.10` responds with 0% packet loss.
+
+![Admin post-ACL server ping result](../labs/evidence/Admin_Ping.png)
 
 ### Current limitations
 
