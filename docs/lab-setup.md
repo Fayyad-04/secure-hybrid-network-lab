@@ -5,7 +5,7 @@ This guide reconstructs the current IPv4 office-network simulation from a blank 
 ## Prerequisites and version
 
 - Cisco Packet Tracer on Windows.
-- Original Packet Tracer application version: 9.0.1.0858 Open **Help > About** and record the exact version here before claiming version compatibility. The IOS versions in the configuration exports are not the Packet Tracer application version.
+- Original Packet Tracer application version: **9.0.1.0858**, recorded by the lab author. The IOS versions in the configuration exports are not the Packet Tracer application version.
 - Devices: one Cisco **1941** router (R1), one **2960** switch (SW1), three PC-PT devices, and one Server-PT.
 - R1's exported configuration identifies a Cisco 1941. Earlier planning suggested a 2911; this guide follows the actual router export.
 - To inspect the existing simulation instead, download and open [office-network-v1.pkt](../labs/packet-tracer/office-network-v1.pkt). Its current saved state must be verified in Packet Tracer.
@@ -223,4 +223,4 @@ Detaching the ACLs restores unrestricted routing between these networks. Reapply
 
 ## Evidence and remaining work
 
-See [connectivity tests](connectivity-test.md) for recorded outcomes, linked screenshots, and the pending browser-evidence checklist. SSH administration, cloud connectivity, automation, monitoring, and recovery remain future milestones.
+See [connectivity tests](connectivity-test.md) for recorded outcomes, linked browser and ping screenshots, and the remaining guest host-ping evidence gap. SSH administration, cloud connectivity, automation, monitoring, and recovery remain future milestones.
