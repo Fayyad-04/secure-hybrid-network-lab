@@ -42,8 +42,7 @@ are operational.
 All three PCs successfully reached their respective default gateways
 and the web server at 10.77.40.10.
 
-Guest-to-server communication is currently allowed because ACL-based
-access restrictions have not yet been implemented.
+Before ACLs were applied, guest-to-server ping succeeded. After ACLs were applied, guest access was blocked as recorded below..
 
 This establishes the routing baseline before security restrictions
 are applied.
