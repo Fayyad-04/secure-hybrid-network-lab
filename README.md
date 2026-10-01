@@ -8,8 +8,8 @@ Current stage: Packet Tracer office-network simulation. VLAN segmentation, inter
 ## Project documentation
 
 - [Rebuild the Packet Tracer lab](docs/lab-setup.md): topology, device connections, IP addressing, VLAN creation, routing, ACLs, verification, and rollback.
-- [Connectivity tests and evidence](docs/connectivity-test.md): baseline and post-ACL results, configuration screenshots, and pending browser captures.
+- [Connectivity tests and evidence](docs/connectivity-test.md): baseline and post-ACL results, configuration screenshots, and browser and ping evidence.
 - [Router configuration](configs/R1-running-config.txt) and [switch configuration](configs/SW1-running-config.txt).
 - [Packet Tracer project](labs/packet-tracer/office-network-v1.pkt).
 
-The original Packet Tracer application version still needs to be recorded in the rebuild guide. Browser screenshots remain pending; the test document distinguishes recorded outcomes from uploaded evidence.
+Packet Tracer version: **9.0.1.0858** (recorded by the lab author). Browser and post-ACL ping screenshots are linked in the test document. The guest screenshot covers other VLAN gateways; screenshots for the three reported guest-to-host ping tests remain outstanding.
