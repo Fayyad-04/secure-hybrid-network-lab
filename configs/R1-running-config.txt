@@ -21,7 +21,7 @@ no ipv6 cef
 !
 !
 !
-username netadmin privilege 15 secret 5 $1$mERr$R6OFkgKa9A/EYCuuNq6sH.
+username netadmin privilege 15 secret  <REDACTED>.
 !
 !
 license udi pid CISCO1941/K9 sn FTX152430MK-
