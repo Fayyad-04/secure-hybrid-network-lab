@@ -106,11 +106,9 @@ These screenshots are separate from the pre-ACL baseline images linked earlier.
 
 ![Employee post-ACL ping results](../labs/evidence/Employee_Ping.png)
 
-**Guest:** its own gateway `10.77.20.1` responds; the other VLAN gateway addresses `10.77.40.1`, `10.77.10.1`, and `10.77.30.1` are blocked.
+**Guest:** its own gateway `10.77.20.1` responds with 0% packet loss. Pings to server `10.77.40.10`, employee `10.77.10.10`, and admin `10.77.30.10` each return destination-host-unreachable responses from R1 (`10.77.20.1`) and 100% packet loss. The updated screenshot now covers the host addresses in the test matrix.
 
-![Guest post-ACL gateway ping results](../labs/evidence/Guest_Ping.png)
-
-**Evidence distinction:** the guest screenshot tests other VLAN **gateways ending in .1**, not the **hosts ending in .10** listed in the main results table. The three host-ping results remain author-reported, without corresponding screenshots. To complete that evidence, run `ping 10.77.40.10`, `ping 10.77.10.10`, and `ping 10.77.30.10` from the guest PC and upload a separate `Guest_Host_Ping.png`. Do not replace the useful gateway-test screenshot.
+![Guest post-ACL host ping results](../labs/evidence/Guest_Ping.png)
 
 **Admin:** server `10.77.40.10` responds with 0% packet loss.
 
