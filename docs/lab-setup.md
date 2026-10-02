@@ -223,4 +223,4 @@ Detaching the ACLs restores unrestricted routing between these networks. Reapply
 
 ## Evidence and remaining work
 
-See [connectivity tests](connectivity-test.md) for recorded outcomes, linked browser and ping screenshots, and the remaining guest host-ping evidence gap. SSH administration, cloud connectivity, automation, monitoring, and recovery remain future milestones.
+See [connectivity tests](connectivity-test.md) for recorded outcomes, linked browser and ping screenshots, including verified guest host-ping evidence. SSH administration, cloud connectivity, automation, monitoring, and recovery remain future milestones.
