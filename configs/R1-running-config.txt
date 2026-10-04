@@ -1,3 +1,7 @@
+! Sanitized configuration export: password hashes have been removed.
+! Replace <REDACTED> with a new lab-only credential before use.
+
+
 Building configuration...
 
 Current configuration : 1781 bytes
@@ -21,7 +25,7 @@ no ipv6 cef
 !
 !
 !
-username netadmin privilege 15 secret  <REDACTED>.
+username netadmin privilege 15 secret <REDACTED>.
 !
 !
 license udi pid CISCO1941/K9 sn FTX152430MK-
@@ -121,164 +125,4 @@ line vty 0 4
 !
 !
 end
-
-
-R1#
-
-
-
-
-
-
-
-
-R1 con0 is now available
-
-
-
-
-
-
-Press RETURN to get started.
-
-
-
-
-
-
-
-
-
-
-
-
-
-R1>show running-config
-        ^
-% Invalid input detected at '^' marker.
-	
-R1>enable
-R1#show running-config
-Building configuration...
-
-Current configuration : 1781 bytes
-!
-version 15.1
-no service timestamps log datetime msec
-no service timestamps debug datetime msec
-no service password-encryption
-!
-hostname R1
-!
-!
-!
-!
-!
-!
-!
-!
-ip cef
-no ipv6 cef
-!
-!
-!
-username netadmin privilege 15 secret 5 $1$mERr$R6OFkgKa9A/EYCuuNq6sH.
-!
-!
-license udi pid CISCO1941/K9 sn FTX152430MK-
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-ip ssh version 2
-ip ssh authentication-retries 2
-ip ssh time-out 60
-no ip domain-lookup
-ip domain-name lab.example
-!
-!
-spanning-tree mode pvst
-!
-!
-!
-!
-!
-!
-interface GigabitEthernet0/0
- description LINK-TO-SW1
- no ip address
- duplex auto
- speed auto
-!
-interface GigabitEthernet0/0.10
- description EMPLOYEES-GATEWAY
- encapsulation dot1Q 10
- ip address 10.77.10.1 255.255.255.0
- ip access-group EMPLOYEE-IN in
-!
-interface GigabitEthernet0/0.20
- description GUEST-GATEWAY
- encapsulation dot1Q 20
- ip address 10.77.20.1 255.255.255.0
- ip access-group GUEST-IN in
-!
-interface GigabitEthernet0/0.30
- description MANAGEMENT-GATEWAY
- encapsulation dot1Q 30
- ip address 10.77.30.1 255.255.255.0
-!
-interface GigabitEthernet0/0.40
- description SERVER-GATEWAY
- encapsulation dot1Q 40
- ip address 10.77.40.1 255.255.255.0
-!
-interface GigabitEthernet0/1
- no ip address
- duplex auto
- speed auto
- shutdown
-!
-interface Vlan1
- no ip address
- shutdown
-!
-ip classless
-!
-ip flow-export version 9
-!
-!
-ip access-list extended EMPLOYEE-IN
- permit tcp 10.77.10.0 0.0.0.255 host 10.77.40.10 eq www
- permit icmp 10.77.10.0 0.0.0.255 host 10.77.10.1 echo
- deny ip any any
-ip access-list extended GUEST-IN
- permit icmp 10.77.20.0 0.0.0.255 host 10.77.20.1 echo
- deny ip any any
-ip access-list standard SSH-ADMIN
- permit host 10.77.30.10
- deny any
-!
-!
-!
-!
-!
-line con 0
-!
-line aux 0
-!
-line vty 0 4
- access-class SSH-ADMIN in
- exec-timeout 5 0
- login local
- transport input ssh
-!
-!
-!
 end
