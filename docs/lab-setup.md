@@ -7,7 +7,7 @@ This guide reconstructs the current IPv4 office-network simulation from a blank 
 - Cisco Packet Tracer on Windows.
 - Original Packet Tracer application version: **9.0.1.0858**, recorded by the lab author. The IOS versions in the configuration exports are not the Packet Tracer application version.
 - Devices: one Cisco **1941** router (R1), one **2960** switch (SW1), three PC-PT devices, and one Server-PT.
-- R1's exported configuration identifies a Cisco 1941. Earlier planning suggested a 2911; this guide follows the actual router export.
+- R1's exported configuration identifies a Cisco 1941.
 - To inspect the existing simulation instead, download and open [office-network-v1.pkt](../labs/packet-tracer/office-network-v1.pkt). Its current saved state must be verified in Packet Tracer.
 
 Commands in the device sections go in that device's **CLI** tab. Repository paths such as `configs/R1-running-config.txt` are filenames on GitHub or your computer, not router commands. If prompted for the initial configuration dialog, answer `no`. Press Enter to accept the filename after `copy running-config startup-config`.
