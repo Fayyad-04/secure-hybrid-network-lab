@@ -16,7 +16,7 @@ ip ssh authentication-retries 2
 ip ssh time-out 60
 ip domain-name lab.example
 !
-username netadmin secret 5 $1$mERr$R6OFkgKa9A/EYCuuNq6sH.
+username netadmin secret 5 <REDACTED>.
 !
 !
 !
