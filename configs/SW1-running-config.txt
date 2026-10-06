@@ -1,3 +1,7 @@
+! Sanitized configuration export: credential hash replaced with <REDACTED>.
+! The username line preserves Packet Tracer's observed omission of privilege 15.
+! See docs/ssh-management.md for the verified session privilege and export caveat.
+! This redacted export is not a ready-to-paste credential configuration.
 Building configuration...
 
 Current configuration : 1949 bytes
@@ -16,7 +20,7 @@ ip ssh authentication-retries 2
 ip ssh time-out 60
 ip domain-name lab.example
 !
-username netadmin secret 5 <REDACTED>.
+username netadmin secret 5 <REDACTED>
 !
 !
 !

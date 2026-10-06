@@ -14,4 +14,4 @@ Current stage: Packet Tracer office-network simulation. VLAN segmentation, inter
 
 Packet Tracer version: **9.0.1.0858** (recorded by the lab author). Browser and post-ACL ping screenshots are linked in the test document. The updated guest screenshot confirms that its own gateway responds while pings to the server, employee, and admin hosts are blocked.
 
-- [Restricted SSH administration](docs/ssh-management.md): administrator-only access to R1, SSH configuration, and verification evidence.
+- [Restricted SSH administration](docs/ssh-management.md): source-restricted access to R1 and SW1, verified SW1 privilege level 15, and configuration and evidence notes.
