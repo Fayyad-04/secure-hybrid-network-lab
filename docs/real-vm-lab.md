@@ -18,9 +18,9 @@ ADMIN01's terminal hostname remains `ubuntu` and its local user is `fayyad`. WEB
 
 ## Firewall policy currently configured
 
-On the SERVERS interface, enabled inbound IPv4 rules for source `10.77.40.10/32` allow DNS to `10.77.40.1/32` on TCP/UDP 53, TCP web traffic to destinations outside the `PRIVATE_NETS` alias on ports in `WEB_PORTS`, and UDP NTP to destinations outside `PRIVATE_NETS` on port 123. The intended aliases are RFC 1918 ranges for `PRIVATE_NETS` and 80/443 for `WEB_PORTS`; their stored contents still need direct inspection. The web and NTP rules were moved from floating rules to ordinary SERVERS rules and then visually checked.
+On the SERVERS interface, enabled inbound IPv4 rules for source `10.77.40.10/32` allow DNS to `10.77.40.1/32` on TCP/UDP 53, TCP web traffic to destinations outside the `PRIVATE_NETS` alias on ports in `WEB_PORTS`, and UDP NTP to destinations outside `PRIVATE_NETS` on port 123. The intended aliases are RFC 1918 ranges for `PRIVATE_NETS` and 80/443 for `WEB_PORTS`; the user inspected both stored aliases and confirmed those types and contents. The web and NTP rules were moved from floating rules to ordinary SERVERS rules and then visually checked. On 28 October 2026, the user confirmed all three SERVERS rules remain enabled and in the intended order.
 
-On LAN, the intended exceptions allow ADMIN01 to reach WEB01 on TCP 80 and TCP 22. A following rule blocks other LAN to SERVERS IPv4 traffic. Existing broad LAN IPv4 and IPv6 allow rules remain below these rules. The SSH connection works, but the final TCP 22 rule has not been independently checked in a screenshot or export.
+On LAN, the intended exceptions allow ADMIN01 to reach WEB01 on TCP 80 and TCP 22. A following rule blocks other LAN to SERVERS IPv4 traffic. Existing broad LAN IPv4 and IPv6 allow rules remain below these rules. The SSH connection works. On 28 October 2026, the user inspected the LAN rule order and exact addresses and confirmed they match the intended policy.
 
 These rules allow WEB01 to reach any non-private IPv4 web or NTP destination, rather than a fixed package-mirror list. IPv6 policy and effective IPv6 paths remain unreviewed.
 
@@ -58,7 +58,7 @@ The user confirmed the expected effective settings from `sshd -T`. On 28 October
 
 ## Next checks
 
-1. Inspect the final OPNsense aliases and rule order, including LAN defaults and IPv6 behavior.
+1. Inspect LAN defaults and effective IPv6 behavior. The user confirmed the intended alias contents and LAN/SERVERS IPv4 rule order on 28 October 2026.
 2. Test SSH from an unauthorized source on the real VM lab.
 3. Confirm ADMIN01's extra NAT adapter is disabled and record the final OPNsense disk size.
 4. Apply and verify outstanding OS updates, then back up configuration and practice recovery.
