@@ -1,11 +1,13 @@
 # secure-hybrid-network-lab
 This project builds and operates a secure hybrid network for a fictional small business. It will cover network segmentation, cloud connectivity, infrastructure automation, monitoring, and recovery.
 
-Current milestone: office-network segmentation, restricted management, and a documented controlled trunk-outage recovery exercise.
+Current milestone: Packet Tracer segmentation and recovery exercise completed; real VM firewall, management, and web-server baseline built and tested.
 
-Current stage: Packet Tracer office-network simulation. VLAN segmentation, inter-VLAN routing, IPv4 access controls, and restricted SSH administration of R1 and SW1 are implemented. Connectivity and access-policy tests are documented as passing. A controlled VLAN 40 trunk-outage recovery exercise is documented. Cloud connectivity, automation, monitoring, and broader recovery capabilities remain planned.
+Current stage: real VM lab in progress. OPNsense separates management and server Internal Networks. WEB01 serves HTTP and accepts key-only SSH from ADMIN01. Specific IPv4 access and deny paths have been tested; IPv6 policy, broader firewall review, backups, cloud connectivity, automation, and monitoring remain planned.
 
 ## Project documentation
+
+- [Real VM lab](docs/real-vm-lab.md): topology, current firewall policy, WEB01 services and SSH hardening, verification levels, and open checks.
 
 - [Controlled trunk-outage incident report](docs/incidents/001-server-vlan-trunk-outage.md): fault diagnosis, repair, recovery validation, and evidence limitations. Recovery duration was not measured.
 
