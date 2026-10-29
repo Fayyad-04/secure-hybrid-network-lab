@@ -7,6 +7,8 @@ Current stage: real VM lab in progress. OPNsense separates management and server
 
 ## Project documentation
 
+- [ADMIN01 network recovery](docs/incidents/002-admin01-netplan-ipv4-failure.md): diagnosed Netplan/DHCP configuration conflict, repaired static IPv4, and verified address, route, and SSH access after reboot.
+
 - [Real VM lab](docs/real-vm-lab.md): topology, current firewall policy, WEB01 services and SSH hardening, verification levels, and open checks.
 
 - [Controlled trunk-outage incident report](docs/incidents/001-server-vlan-trunk-outage.md): fault diagnosis, repair, recovery validation, and evidence limitations. Recovery duration was not measured.
