@@ -16,6 +16,10 @@ VirtualBox uses Internal Networks for the management and server segments. No tag
 
 ADMIN01's terminal hostname remains `ubuntu` and its local user is `fayyad`. WEB01's hostname is `web01` and its administrative user is `labadmin`. ADMIN01 and OPNsense were user-confirmed at 4 GB RAM and 2 vCPUs each. WEB01 was planned for 2 GB RAM and 2 vCPUs; those settings were not independently checked. WEB01 has a new 25 GB virtual disk with LVM; approximately 11.5 GB remains unallocated within the volume group.
 
+## ADMIN01 network recovery
+
+On 30 October 2026, ADMIN01's IPv4 activation failure was repaired by disabling a stale installer Netplan file and explicitly setting DHCPv4 to false. Pasted output confirmed manual IPv4, 10.77.30.10/24, and the default route via 10.77.30.1. The user confirmed normal SSH to WEB01, then confirmed the address, route, and SSH access persisted after reboot without manual activation. See the [incident report](incidents/002-admin01-netplan-ipv4-failure.md) for diagnostics, repair commands, and evidence limitations. The alternate-source SSH test remains pending; its earlier network-unreachable error did not validate a firewall block.
+
 ## Firewall policy currently configured
 
 On the SERVERS interface, enabled inbound IPv4 rules for source `10.77.40.10/32` allow DNS to `10.77.40.1/32` on TCP/UDP 53, TCP web traffic to destinations outside the `PRIVATE_NETS` alias on ports in `WEB_PORTS`, and UDP NTP to destinations outside `PRIVATE_NETS` on port 123. The intended aliases are RFC 1918 ranges for `PRIVATE_NETS` and 80/443 for `WEB_PORTS`; the user inspected both stored aliases and confirmed those types and contents. The web and NTP rules were moved from floating rules to ordinary SERVERS rules and then visually checked. On 28 October 2026, the user confirmed all three SERVERS rules remain enabled and in the intended order.
@@ -52,6 +56,7 @@ The user confirmed the expected effective settings from `sshd -T`. On 28 October
 | WEB01 to OPNsense management HTTPS at 10.77.30.1 | Timeout and matching firewall block, previously user-confirmed |
 | WEB01 NTP | Synchronized over IPv4, screenshot seen in the prior session |
 | ADMIN01 to WEB01 SSH | Initial login and later new key-only login, user-confirmed |
+| ADMIN01 network persistence | Static address, default route, and SSH to WEB01 passed after reboot, user-confirmed on 30 October 2026 |
 | WEB01 password-only SSH | Rejected after SSH reload, user-confirmed on 28 October 2026 |
 
 “Screenshot seen” describes prior interactive evidence, not an evidence file committed to this repository. Tests of unauthorized SSH sources, IPv6 paths, and firewall management access remain pending.
