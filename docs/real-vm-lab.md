@@ -16,6 +16,8 @@ VirtualBox uses Internal Networks for the management and server segments. No tag
 
 ADMIN01's terminal hostname remains `ubuntu` and its local user is `fayyad`. WEB01's hostname is `web01` and its administrative user is `labadmin`. ADMIN01 and OPNsense were user-confirmed at 4 GB RAM and 2 vCPUs each. WEB01 was planned for 2 GB RAM and 2 vCPUs; those settings were not independently checked. WEB01 has a new 25 GB virtual disk with LVM; approximately 11.5 GB remains unallocated within the volume group.
 
+On 31 October 2026, the user inspected ADMIN01's VirtualBox network settings: Adapter 1 is attached to Internal Network `LAB-MGMT`, MAC `08:00:27:f9:79:23`; Adapters 2, 3, and 4 are disabled. This confirms no additional enabled NAT adapter in the inspected settings.
+
 ## ADMIN01 network recovery
 
 On 30 October 2026, ADMIN01's IPv4 activation failure was repaired by disabling a stale installer Netplan file and explicitly setting DHCPv4 to false. Pasted output confirmed manual IPv4, 10.77.30.10/24, and the default route via 10.77.30.1. The user confirmed normal SSH to WEB01, then confirmed the address, route, and SSH access persisted after reboot without manual activation. See the [incident report](incidents/002-admin01-netplan-ipv4-failure.md) for diagnostics, repair commands, and evidence limitations. The earlier alternate-source attempt returned network-unreachable while ADMIN01 had no IPv4 address; that attempt did not validate a firewall block. A later test with restored connectivity is recorded below.
@@ -67,7 +69,7 @@ The user confirmed the expected effective settings from `sshd -T`. On 28 October
 
 1. Review LAN defaults and IPv6 rule policy. The user confirmed the intended alias contents and LAN/SERVERS IPv4 rule order on 28 October 2026; neither ADMIN01 nor WEB01 had a global IPv6 address on 31 October 2026.
 2. Test SSH from a separate unauthorized VM when one is available. The temporary ADMIN01 source-address test passed on 31 October 2026.
-3. Confirm ADMIN01's extra NAT adapter is disabled and record the final OPNsense disk size.
+3. Record the final OPNsense disk size. ADMIN01's additional adapters were confirmed disabled on 31 October 2026.
 4. Apply and verify outstanding OS updates, then back up configuration and practice recovery.
 5. Add cloud connectivity, automation, and monitoring as separate, tested phases.
 
