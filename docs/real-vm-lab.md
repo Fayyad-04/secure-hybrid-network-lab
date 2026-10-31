@@ -26,7 +26,7 @@ On the SERVERS interface, enabled inbound IPv4 rules for source `10.77.40.10/32`
 
 On LAN, the intended exceptions allow ADMIN01 to reach WEB01 on TCP 80 and TCP 22. A following rule blocks other LAN to SERVERS IPv4 traffic. Existing broad LAN IPv4 and IPv6 allow rules remain below these rules. The SSH connection works. On 28 October 2026, the user inspected the LAN rule order and exact addresses and confirmed they match the intended policy.
 
-These rules allow WEB01 to reach any non-private IPv4 web or NTP destination, rather than a fixed package-mirror list. IPv6 policy and effective IPv6 paths remain unreviewed.
+These rules allow WEB01 to reach any non-private IPv4 web or NTP destination, rather than a fixed package-mirror list. On 31 October 2026, the user ran `ip -6 addr show scope global` and `ip -6 route` on ADMIN01 and WEB01. Both global-address commands returned no addresses; each route output contained only `fe80::/64` on enp0s3. This does not demonstrate routed IPv6 connectivity between the segments. The broad LAN IPv6 allow rule remains configured and the IPv6 policy still needs review before enabling IPv6.
 
 ## Services and access
 
@@ -58,13 +58,14 @@ The user confirmed the expected effective settings from `sshd -T`. On 28 October
 | ADMIN01 to WEB01 SSH | Initial login and later new key-only login, user-confirmed |
 | ADMIN01 network persistence | Static address, default route, and SSH to WEB01 passed after reboot, user-confirmed on 30 October 2026 |
 | WEB01 password-only SSH | Rejected after SSH reload, user-confirmed on 28 October 2026 |
+| ADMIN01 and WEB01 IPv6 baseline | No global IPv6 addresses; each showed only an enp0s3 `fe80::/64` route, user-pasted on 31 October 2026 |
 | ADMIN01 temporary source 10.77.30.20 to WEB01 TCP 22 | Source route via 10.77.30.1 confirmed; SSH timed out; user subsequently found a matching block in OPNsense Live View on 31 October 2026. Temporary address removed; output showed only 10.77.30.10/24 afterward. This tests source-address matching on the same VM, not a separate host. |
 
-“Screenshot seen” describes prior interactive evidence, not an evidence file committed to this repository. The alternate-source SSH test from ADMIN01 is user-confirmed. Tests from a separate unauthorized VM, IPv6 paths, and firewall management access remain pending.
+“Screenshot seen” describes prior interactive evidence, not an evidence file committed to this repository. The alternate-source SSH test from ADMIN01 is user-confirmed. Tests from a separate unauthorized VM and firewall management access remain pending. A routable IPv6 test is not applicable to the observed VM configuration, but the IPv6 rule policy remains open for review.
 
 ## Next checks
 
-1. Inspect LAN defaults and effective IPv6 behavior. The user confirmed the intended alias contents and LAN/SERVERS IPv4 rule order on 28 October 2026.
+1. Review LAN defaults and IPv6 rule policy. The user confirmed the intended alias contents and LAN/SERVERS IPv4 rule order on 28 October 2026; neither ADMIN01 nor WEB01 had a global IPv6 address on 31 October 2026.
 2. Test SSH from a separate unauthorized VM when one is available. The temporary ADMIN01 source-address test passed on 31 October 2026.
 3. Confirm ADMIN01's extra NAT adapter is disabled and record the final OPNsense disk size.
 4. Apply and verify outstanding OS updates, then back up configuration and practice recovery.
