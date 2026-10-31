@@ -18,7 +18,7 @@ ADMIN01's terminal hostname remains `ubuntu` and its local user is `fayyad`. WEB
 
 ## ADMIN01 network recovery
 
-On 30 October 2026, ADMIN01's IPv4 activation failure was repaired by disabling a stale installer Netplan file and explicitly setting DHCPv4 to false. Pasted output confirmed manual IPv4, 10.77.30.10/24, and the default route via 10.77.30.1. The user confirmed normal SSH to WEB01, then confirmed the address, route, and SSH access persisted after reboot without manual activation. See the [incident report](incidents/002-admin01-netplan-ipv4-failure.md) for diagnostics, repair commands, and evidence limitations. The alternate-source SSH test remains pending; its earlier network-unreachable error did not validate a firewall block.
+On 30 October 2026, ADMIN01's IPv4 activation failure was repaired by disabling a stale installer Netplan file and explicitly setting DHCPv4 to false. Pasted output confirmed manual IPv4, 10.77.30.10/24, and the default route via 10.77.30.1. The user confirmed normal SSH to WEB01, then confirmed the address, route, and SSH access persisted after reboot without manual activation. See the [incident report](incidents/002-admin01-netplan-ipv4-failure.md) for diagnostics, repair commands, and evidence limitations. The earlier alternate-source attempt returned network-unreachable while ADMIN01 had no IPv4 address; that attempt did not validate a firewall block. A later test with restored connectivity is recorded below.
 
 ## Firewall policy currently configured
 
@@ -58,13 +58,14 @@ The user confirmed the expected effective settings from `sshd -T`. On 28 October
 | ADMIN01 to WEB01 SSH | Initial login and later new key-only login, user-confirmed |
 | ADMIN01 network persistence | Static address, default route, and SSH to WEB01 passed after reboot, user-confirmed on 30 October 2026 |
 | WEB01 password-only SSH | Rejected after SSH reload, user-confirmed on 28 October 2026 |
+| ADMIN01 temporary source 10.77.30.20 to WEB01 TCP 22 | Source route via 10.77.30.1 confirmed; SSH timed out; user subsequently found a matching block in OPNsense Live View on 31 October 2026. Temporary address removed; output showed only 10.77.30.10/24 afterward. This tests source-address matching on the same VM, not a separate host. |
 
-“Screenshot seen” describes prior interactive evidence, not an evidence file committed to this repository. Tests of unauthorized SSH sources, IPv6 paths, and firewall management access remain pending.
+“Screenshot seen” describes prior interactive evidence, not an evidence file committed to this repository. The alternate-source SSH test from ADMIN01 is user-confirmed. Tests from a separate unauthorized VM, IPv6 paths, and firewall management access remain pending.
 
 ## Next checks
 
 1. Inspect LAN defaults and effective IPv6 behavior. The user confirmed the intended alias contents and LAN/SERVERS IPv4 rule order on 28 October 2026.
-2. Test SSH from an unauthorized source on the real VM lab.
+2. Test SSH from a separate unauthorized VM when one is available. The temporary ADMIN01 source-address test passed on 31 October 2026.
 3. Confirm ADMIN01's extra NAT adapter is disabled and record the final OPNsense disk size.
 4. Apply and verify outstanding OS updates, then back up configuration and practice recovery.
 5. Add cloud connectivity, automation, and monitoring as separate, tested phases.
