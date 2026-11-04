@@ -67,7 +67,7 @@ The user confirmed the expected effective settings from `sshd -T`. On 28 October
 
 ## Firewall configuration backup
 
-On 4 November 2026, the user confirmed that the OPNsense export `config-fw01.lab.example-20261031204039.xml` (reported size 66.4 KB) was present in ADMIN01's Downloads and visible in the Windows host folder after copying it through the VirtualBox share `sf_Lab-Backups`. The XML is kept outside this repository. Encryption of this export has not been confirmed. A checksum comparison and an isolated restore test are pending.
+On 4 November 2026, the user confirmed that the OPNsense export `config-fw01.lab.example-20261031204039.xml` (reported size 66.4 KB) was present in ADMIN01's Downloads and visible in the Windows host folder after copying it through the VirtualBox share `sf_Lab-Backups`. The XML is kept outside this repository. Encryption of this export has not been confirmed. The user confirmed that SHA-256 checksums of the ADMIN01 original and Windows copy matched. An isolated restore test remains pending.
 
 ## Next checks
 
