@@ -65,6 +65,10 @@ The user confirmed the expected effective settings from `sshd -T`. On 28 October
 
 “Screenshot seen” describes prior interactive evidence, not an evidence file committed to this repository. The alternate-source SSH test from ADMIN01 is user-confirmed. Tests from a separate unauthorized VM and firewall management access remain pending. A routable IPv6 test is not applicable to the observed VM configuration, but the IPv6 rule policy remains open for review.
 
+## Firewall configuration backup
+
+On 4 November 2026, the user confirmed that the OPNsense export `config-fw01.lab.example-20261031204039.xml` (reported size 66.4 KB) was present in ADMIN01's Downloads and visible in the Windows host folder after copying it through the VirtualBox share `sf_Lab-Backups`. The XML is kept outside this repository. Encryption of this export has not been confirmed. A checksum comparison and an isolated restore test are pending.
+
 ## Next checks
 
 1. Review LAN defaults and IPv6 rule policy. The user confirmed the intended alias contents and LAN/SERVERS IPv4 rule order on 28 October 2026; neither ADMIN01 nor WEB01 had a global IPv6 address on 31 October 2026.
