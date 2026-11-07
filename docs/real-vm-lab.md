@@ -34,7 +34,7 @@ These rules allow WEB01 to reach any non-private IPv4 web or NTP destination, ra
 
 WEB01 was installed offline after an initial mirror DNS failure. Its static address, default route, and DNS were checked after installation. Nginx and curl were installed; a local service/HTTP check was user-confirmed. ADMIN01 received HTTP 200 and the Nginx welcome page from WEB01.
 
-APT initially rejected repository metadata as “not valid yet” because WEB01's clock lagged by days. After the NTP rule was added and `systemd-timesyncd` restarted, a screenshot showed a synchronized clock, IPv4 time server `91.189.91.157`, and received packets. `apt update` then succeeded and reported 21 upgradable packages. A full package upgrade was not confirmed.
+APT initially rejected repository metadata as “not valid yet” because WEB01's clock lagged by days. After the NTP rule was added and `systemd-timesyncd` restarted, a screenshot showed a synchronized clock, IPv4 time server `91.189.91.157`, and received packets. `apt update` then succeeded and reported 21 upgradable packages. On 7 November 2026, the user reported completing `apt update` and `apt upgrade` on WEB01. A reboot was requested and performed. After reboot, the user confirmed a fresh SSH login from ADMIN01, Nginx active, and the HTTP check passing. Package versions and remaining upgrade counts were not captured.
 
 OpenSSH was installed on WEB01. ADMIN01 created a dedicated Ed25519 key at `~/.ssh/web01_lab_ed25519`; `ssh-copy-id` reported one key added. Public-key-only login succeeded. The WEB01 SSH drop-in is `/etc/ssh/sshd_config.d/00-lab-hardening.conf` with:
 
@@ -56,6 +56,7 @@ The user confirmed the expected effective settings from `sshd -T`. On 28 October
 | ADMIN01 to WEB01 ICMP | 100% loss; firewall log matched the LAN-to-SERVERS block, screenshot seen in the prior session |
 | WEB01 DNS and package downloads | Successful after SERVERS rule correction, screenshots seen in the prior session |
 | WEB01 to OPNsense management HTTPS at 10.77.30.1 | Timeout and matching firewall block, previously user-confirmed |
+| WEB01 post-update reboot | SSH login, Nginx active, and HTTP check all passed, user-confirmed on 7 November 2026 |
 | WEB01 NTP | Synchronized over IPv4, screenshot seen in the prior session |
 | ADMIN01 to WEB01 SSH | Initial login and later new key-only login, user-confirmed |
 | ADMIN01 network persistence | Static address, default route, and SSH to WEB01 passed after reboot, user-confirmed on 30 October 2026 |
@@ -74,7 +75,7 @@ On 4 November 2026, the user confirmed that the OPNsense export `config-fw01.lab
 1. Review LAN defaults and IPv6 rule policy. The user confirmed the intended alias contents and LAN/SERVERS IPv4 rule order on 28 October 2026; neither ADMIN01 nor WEB01 had a global IPv6 address on 31 October 2026.
 2. Test SSH from a separate unauthorized VM when one is available. The temporary ADMIN01 source-address test passed on 31 October 2026.
 3. Record the final OPNsense disk size. ADMIN01's additional adapters were confirmed disabled on 31 October 2026.
-4. Apply and verify outstanding OS updates, then back up configuration and practice recovery.
+4. Review updates for ADMIN01 and OPNsense and practice recovery. WEB01's package upgrade and post-reboot service checks were user-confirmed on 7 November 2026. The OPNsense export and transfer are complete, with a restore test pending.
 5. Add cloud connectivity, automation, and monitoring as separate, tested phases.
 
 Record sanitized configuration exports and carefully selected evidence only after checking for passwords, private keys, credential hashes, and other sensitive material.
