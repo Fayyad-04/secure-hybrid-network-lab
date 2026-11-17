@@ -1,11 +1,13 @@
 # secure-hybrid-network-lab
 This project builds and operates a secure hybrid network for a fictional small business. It will cover network segmentation, cloud connectivity, infrastructure automation, monitoring, and recovery.
 
-Current milestone: Packet Tracer segmentation and recovery exercise completed; real VM firewall, management, and web-server baseline built and tested.
+Current milestone: Packet Tracer segmentation and recovery exercise completed; real VM baseline tested; AWS EC2-to-OPNsense WireGuard connectivity verified with HTTP access to WEB01 and a logged SSH denial.
 
-Current stage: real VM lab in progress. OPNsense separates management and server Internal Networks. WEB01 serves HTTP and accepts key-only SSH from ADMIN01. Specific IPv4 access and deny paths have been tested; IPv6 policy, broader firewall review, backups, cloud connectivity, automation, and monitoring remain planned.
+Current stage: real VM lab in progress. OPNsense separates management and server Internal Networks. WEB01 serves HTTP and accepts key-only SSH from ADMIN01. Specific IPv4 access and deny paths have been tested; AWS EC2 now reaches WEB01 over WireGuard on TCP 80, while a TCP 22 attempt is blocked. IPv6 policy, broader firewall review, tested restoration, cloud cost verification, automation, and monitoring remain open.
 
 ## Project documentation
+
+- [AWS hybrid connectivity with WireGuard](docs/aws-wireguard-lab.md): topology, sanitized settings, handshake and route output, tunnel ping screenshot, HTTP 200 result, logged SSH denial, and resolved setup issues.
 
 - [ADMIN01 network recovery](docs/incidents/002-admin01-netplan-ipv4-failure.md): diagnosed Netplan/DHCP configuration conflict, repaired static IPv4, and verified address, route, and SSH access after reboot.
 

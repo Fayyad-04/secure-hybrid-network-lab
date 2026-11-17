@@ -70,12 +70,18 @@ The user confirmed the expected effective settings from `sshd -T`. On 28 October
 
 On 4 November 2026, the user confirmed that the OPNsense export `config-fw01.lab.example-20261031204039.xml` (reported size 66.4 KB) was present in ADMIN01's Downloads and visible in the Windows host folder after copying it through the VirtualBox share `sf_Lab-Backups`. The XML is kept outside this repository. Encryption of this export has not been confirmed. The user confirmed that SHA-256 checksums of the ADMIN01 original and Windows copy matched. An isolated restore test remains pending.
 
+## AWS hybrid connectivity milestone
+
+On 18 November 2026, EC2-to-OPNsense WireGuard connectivity was validated. OPNsense uses 10.77.50.1/30 and EC2 uses 10.77.50.2/30. A fresh handshake and a four-packet tunnel ping with zero loss were recorded. EC2's route to WEB01 selects wg0 with source 10.77.50.2. WEB01 returned HTTP 200 to EC2, while OPNsense logged an inbound wg0 block for EC2 traffic to WEB01 TCP 22.
+
+The instructed WireGuard group exception allows IPv4 TCP from 10.77.50.2/32 to 10.77.40.10/32 port 80. This is additional to the existing local LAN policy, not a replacement. See the [AWS/WireGuard report](aws-wireguard-lab.md) for original screenshots, terminal excerpts, evidence limits, and troubleshooting.
+
 ## Next checks
 
 1. Review LAN defaults and IPv6 rule policy. The user confirmed the intended alias contents and LAN/SERVERS IPv4 rule order on 28 October 2026; neither ADMIN01 nor WEB01 had a global IPv6 address on 31 October 2026.
 2. Test SSH from a separate unauthorized VM when one is available. The temporary ADMIN01 source-address test passed on 31 October 2026.
 3. Record the final OPNsense disk size. ADMIN01's additional adapters were confirmed disabled on 31 October 2026.
 4. Review updates for ADMIN01 and OPNsense and practice recovery. WEB01's package upgrade and post-reboot service checks were user-confirmed on 7 November 2026. The OPNsense export and transfer are complete, with a restore test pending.
-5. Add cloud connectivity, automation, and monitoring as separate, tested phases.
+5. Extend the verified initial AWS/WireGuard milestone with AWS cost/settings verification and tunnel recovery tests. Add automation and monitoring as separate, tested phases.
 
 Record sanitized configuration exports and carefully selected evidence only after checking for passwords, private keys, credential hashes, and other sensitive material.
