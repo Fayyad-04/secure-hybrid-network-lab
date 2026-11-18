@@ -6,7 +6,7 @@ Status: initial IPv4 hybrid-access milestone verified. Recorded on 18 November 2
 
 An Ubuntu EC2 host connects to the local OPNsense firewall over WireGuard. EC2 can reach WEB01's Nginx service on TCP 80; an attempted TCP 22 connection is blocked at OPNsense. A successful handshake, tunnel ping, route lookup, HTTP response, and firewall log support this result.
 
-This is a single EC2 host accessing one local server, not proof of connectivity from an entire AWS VPC or complete network isolation. IPv6 policy, recovery, monitoring, automation, and cost verification remain open.
+This is a single EC2 host accessing one local server, not proof of connectivity from an entire AWS VPC or complete network isolation. Initial scheduled HTTP monitoring and firewall restart recovery were subsequently tested; see [monitoring and recovery](monitoring-recovery.md). IPv6 policy, isolated restoration, broader automation, and detailed cost verification remain open.
 
 ## Topology
 
@@ -230,10 +230,10 @@ Removing the extra i restored [Interface]. Restarting wg-quick@wg0 then produced
 
 - Audit actual AWS instance, storage, credit mode, VPC/subnet routing, and attached security-group settings. Record cost and credit consumption. The user reports USD 100 credit expiring 12 May 2027 and a cash budget of RM0; credit coverage and current balance were not independently verified. No assertion of zero running cost is made.
 - Update both relevant security-group source rules when the home public IP changes. If EC2's public IP changes, update the OPNsense endpoint and SSH destination.
-- Test tunnel recovery after reboots and connection changes; service enablement alone is not recovery evidence.
+- OPNsense recovery after a forced power-off and console boot/reboot is recorded in the [monitoring/recovery report](monitoring-recovery.md). Clean web-interface reboot, EC2 reboot, and connection-change recovery remain untested.
 - Review IPv6 policy and broad existing management/LAN permissions. These IPv4 tests do not close those items.
 - Test encrypted backups and isolated restoration. Existing backup-copy checksum verification is not a restore test.
-- Add monitoring and automation with separate evidence.
+- Basic HTTP monitoring with a systemd timer and an outage/recovery test is now [documented](monitoring-recovery.md). External alerts and broader automation remain pending.
 - Access from other AWS hosts or wider networks requires a separate routing and policy design; it was not configured or tested here.
 
 ## References

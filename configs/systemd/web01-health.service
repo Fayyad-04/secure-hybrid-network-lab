@@ -1,0 +1,13 @@
+[Unit]
+Description=Check WEB01 HTTP over the hybrid network
+Wants=network-online.target
+After=network-online.target wg-quick@wg0.service
+
+[Service]
+Type=oneshot
+DynamicUser=yes
+ExecStart=/usr/local/bin/check-web01
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true

@@ -1,0 +1,44 @@
+ubuntu@ip-10-88-10-171:~$ sudo journalctl -u web01-health.service --since "3 minutes ago" --no-pager
+Nov 18 23:20:50 ip-10-88-10-171 systemd[1]: Starting web01-health.service - Check WEB01 HTTP over the hybrid network...
+Nov 18 23:20:50 ip-10-88-10-171 check-web01[19954]: 2026-11-18T23:20:50Z OK WEB01 HTTP 200
+Nov 18 23:20:50 ip-10-88-10-171 systemd[1]: web01-health.service: Deactivated successfully.
+Nov 18 23:20:50 ip-10-88-10-171 systemd[1]: Finished web01-health.service - Check WEB01 HTTP over the hybrid network.
+Nov 18 23:21:51 ip-10-88-10-171 systemd[1]: Starting web01-health.service - Check WEB01 HTTP over the hybrid network...
+Nov 18 23:21:51 ip-10-88-10-171 check-web01[19963]: curl: (7) Failed to connect to 10.77.40.10 port 80 after 154 ms: Could not connect to server
+Nov 18 23:21:51 ip-10-88-10-171 check-web01[19961]: 2026-11-18T23:21:51Z FAIL WEB01 connection failed
+Nov 18 23:21:51 ip-10-88-10-171 systemd[1]: web01-health.service: Main process exited, code=exited, status=1/FAILURE
+Nov 18 23:21:51 ip-10-88-10-171 systemd[1]: web01-health.service: Failed with result 'exit-code'.
+Nov 18 23:21:51 ip-10-88-10-171 systemd[1]: Failed to start web01-health.service - Check WEB01 HTTP over the hybrid network.
+Nov 18 23:22:52 ip-10-88-10-171 systemd[1]: Starting web01-health.service - Check WEB01 HTTP over the hybrid network...
+Nov 18 23:22:52 ip-10-88-10-171 check-web01[19970]: curl: (7) Failed to connect to 10.77.40.10 port 80 after 147 ms: Could not connect to server
+Nov 18 23:22:52 ip-10-88-10-171 check-web01[19968]: 2026-11-18T23:22:52Z FAIL WEB01 connection failed
+Nov 18 23:22:52 ip-10-88-10-171 systemd[1]: web01-health.service: Main process exited, code=exited, status=1/FAILURE
+Nov 18 23:22:52 ip-10-88-10-171 systemd[1]: web01-health.service: Failed with result 'exit-code'.
+Nov 18 23:22:52 ip-10-88-10-171 systemd[1]: Failed to start web01-health.service - Check WEB01 HTTP over the hybrid network.
+ubuntu@ip-10-88-10-171:~$ sudo journalctl -u web01-health.service --since "5 minutes ago" --no-pager
+Nov 18 23:21:51 ip-10-88-10-171 systemd[1]: Starting web01-health.service - Check WEB01 HTTP over the hybrid network...
+Nov 18 23:21:51 ip-10-88-10-171 check-web01[19963]: curl: (7) Failed to connect to 10.77.40.10 port 80 after 154 ms: Could not connect to server
+Nov 18 23:21:51 ip-10-88-10-171 check-web01[19961]: 2026-11-18T23:21:51Z FAIL WEB01 connection failed
+Nov 18 23:21:51 ip-10-88-10-171 systemd[1]: web01-health.service: Main process exited, code=exited, status=1/FAILURE
+Nov 18 23:21:51 ip-10-88-10-171 systemd[1]: web01-health.service: Failed with result 'exit-code'.
+Nov 18 23:21:51 ip-10-88-10-171 systemd[1]: Failed to start web01-health.service - Check WEB01 HTTP over the hybrid network.
+Nov 18 23:22:52 ip-10-88-10-171 systemd[1]: Starting web01-health.service - Check WEB01 HTTP over the hybrid network...
+Nov 18 23:22:52 ip-10-88-10-171 check-web01[19970]: curl: (7) Failed to connect to 10.77.40.10 port 80 after 147 ms: Could not connect to server
+Nov 18 23:22:52 ip-10-88-10-171 check-web01[19968]: 2026-11-18T23:22:52Z FAIL WEB01 connection failed
+Nov 18 23:22:52 ip-10-88-10-171 systemd[1]: web01-health.service: Main process exited, code=exited, status=1/FAILURE
+Nov 18 23:22:52 ip-10-88-10-171 systemd[1]: web01-health.service: Failed with result 'exit-code'.
+Nov 18 23:22:52 ip-10-88-10-171 systemd[1]: Failed to start web01-health.service - Check WEB01 HTTP over the hybrid network.
+Nov 18 23:23:53 ip-10-88-10-171 systemd[1]: Starting web01-health.service - Check WEB01 HTTP over the hybrid network...
+Nov 18 23:23:53 ip-10-88-10-171 check-web01[19983]: curl: (7) Failed to connect to 10.77.40.10 port 80 after 133 ms: Could not connect to server
+Nov 18 23:23:53 ip-10-88-10-171 check-web01[19981]: 2026-11-18T23:23:53Z FAIL WEB01 connection failed
+Nov 18 23:23:53 ip-10-88-10-171 systemd[1]: web01-health.service: Main process exited, code=exited, status=1/FAILURE
+Nov 18 23:23:53 ip-10-88-10-171 systemd[1]: web01-health.service: Failed with result 'exit-code'.
+Nov 18 23:23:53 ip-10-88-10-171 systemd[1]: Failed to start web01-health.service - Check WEB01 HTTP over the hybrid network.
+Nov 18 23:24:54 ip-10-88-10-171 systemd[1]: Starting web01-health.service - Check WEB01 HTTP over the hybrid network...
+Nov 18 23:24:54 ip-10-88-10-171 check-web01[19988]: 2026-11-18T23:24:54Z OK WEB01 HTTP 200
+Nov 18 23:24:54 ip-10-88-10-171 systemd[1]: web01-health.service: Deactivated successfully.
+Nov 18 23:24:54 ip-10-88-10-171 systemd[1]: Finished web01-health.service - Check WEB01 HTTP over the hybrid network.
+Nov 18 23:25:55 ip-10-88-10-171 systemd[1]: Starting web01-health.service - Check WEB01 HTTP over the hybrid network...
+Nov 18 23:25:55 ip-10-88-10-171 check-web01[19996]: 2026-11-18T23:25:55Z OK WEB01 HTTP 200
+Nov 18 23:25:55 ip-10-88-10-171 systemd[1]: web01-health.service: Deactivated successfully.
+Nov 18 23:25:55 ip-10-88-10-171 systemd[1]: Finished web01-health.service - Check WEB01 HTTP over the hybrid network.

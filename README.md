@@ -3,9 +3,11 @@ This project builds and operates a secure hybrid network for a fictional small b
 
 Current milestone: Packet Tracer segmentation and recovery exercise completed; real VM baseline tested; AWS EC2-to-OPNsense WireGuard connectivity verified with HTTP access to WEB01 and a logged SSH denial.
 
-Current stage: real VM lab in progress. OPNsense separates management and server Internal Networks. WEB01 serves HTTP and accepts key-only SSH from ADMIN01. Specific IPv4 access and deny paths have been tested; AWS EC2 now reaches WEB01 over WireGuard on TCP 80, while a TCP 22 attempt is blocked. IPv6 policy, broader firewall review, tested restoration, cloud cost verification, automation, and monitoring remain open.
+Current stage: real VM lab in progress. OPNsense separates management and server Internal Networks. WEB01 serves HTTP and accepts key-only SSH from ADMIN01. Specific IPv4 access and deny paths have been tested; AWS EC2 now reaches WEB01 over WireGuard on TCP 80, while a TCP 22 attempt is blocked. IPv6 policy, broader firewall review, tested restoration, cloud cost verification, and broader infrastructure automation remain open. Scheduled HTTP monitoring now detects outages and recovery; firewall restart recovery has also been tested with the limitations documented below.
 
 ## Project documentation
+
+- [Monitoring and recovery validation](docs/monitoring-recovery.md): tested health-check script and systemd timer, outage/recovery journal, and OPNsense restart evidence.
 
 - [AWS hybrid connectivity with WireGuard](docs/aws-wireguard-lab.md): topology, sanitized settings, handshake and route output, tunnel ping screenshot, HTTP 200 result, logged SSH denial, and resolved setup issues.
 

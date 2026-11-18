@@ -1,0 +1,11 @@
+[Unit]
+Description=Check WEB01 HTTP every minute
+
+[Timer]
+OnBootSec=60s
+OnUnitActiveSec=60s
+AccuracySec=1s
+Unit=web01-health.service
+
+[Install]
+WantedBy=timers.target

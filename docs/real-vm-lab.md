@@ -80,8 +80,8 @@ The instructed WireGuard group exception allows IPv4 TCP from 10.77.50.2/32 to 1
 
 1. Review LAN defaults and IPv6 rule policy. The user confirmed the intended alias contents and LAN/SERVERS IPv4 rule order on 28 October 2026; neither ADMIN01 nor WEB01 had a global IPv6 address on 31 October 2026.
 2. Test SSH from a separate unauthorized VM when one is available. The temporary ADMIN01 source-address test passed on 31 October 2026.
-3. Record the final OPNsense disk size. ADMIN01's additional adapters were confirmed disabled on 31 October 2026.
+3. OPNsense root filesystem size was observed as 31G on 19 November 2026; full virtual disk allocation remains unverified. ADMIN01's additional adapters were confirmed disabled on 31 October 2026.
 4. Review updates for ADMIN01 and OPNsense and practice recovery. WEB01's package upgrade and post-reboot service checks were user-confirmed on 7 November 2026. The OPNsense export and transfer are complete, with a restore test pending.
-5. Extend the verified initial AWS/WireGuard milestone with AWS cost/settings verification and tunnel recovery tests. Add automation and monitoring as separate, tested phases.
+5. See [monitoring and recovery validation](monitoring-recovery.md) for the tested HTTP timer, controlled outage, and OPNsense restart recovery. EC2 reboot persistence, external alerts, broader automation, and detailed AWS cost/settings checks remain open.
 
 Record sanitized configuration exports and carefully selected evidence only after checking for passwords, private keys, credential hashes, and other sensitive material.
